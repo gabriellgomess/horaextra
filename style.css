@@ -1,0 +1,155 @@
+
+/* TAGS HTML */
+
+body {
+    background: rgba(38, 104, 236, 0.829);
+}
+
+fieldset{
+    border: 1px solid grey;
+    border-radius: 4px;
+    width: 175px;
+    text-align: center;        
+}
+
+legend{
+    font-family: Helvetica;
+    font-size: 15px;
+}
+
+h6{
+    font-family: 'Shadows Into Light', cursive;
+}
+
+h4{
+    text-align: center;
+}
+
+footer {
+    background-color: #ffffff;
+    font-family: 'Arvo', serif;
+    width: 100%;
+    text-align: center;
+    position: relative;
+    bottom:0;
+    left:0;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0; /* <-- Aparentemente, algumas margens ainda estão lá, apesar de estar ocultas */
+}
+
+input[type=number] {
+-moz-appearance:textfield; /* Firefox */
+}
+
+p{
+    max-width: 200px;
+}
+
+/* CLASSES */
+
+.card{
+    background: #B5B5B5;
+    margin-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    min-height: 300px;
+    box-shadow: -5px 12px 15px 5px rgba(0,0,0,0.75);           
+}          
+.col-xs-6, .col-md-6 {
+    margin: auto;
+}
+
+.form-group{
+    margin-left: auto;
+    margin-right: auto;
+}
+
+*{
+    margin: 0;
+}
+.btn {
+    margin: 10px;
+}
+
+.jumbotron{
+    padding: 20px;
+}
+
+
+/* ID's */
+
+#dsr{
+    width: 280px;
+    padding: 10px;    
+}
+
+#resultado-txt {
+    margin-bottom: 50px;
+}
+  
+#resultado{
+     font-family: 'Poppins', sans-serif;
+ 
+}
+
+#he60-h, #he60-m, #he100-h, #he100-m{
+    /* margin-top: 10px; */
+    max-width: 70px;
+    display: inline;
+}
+#dias, #sem {    
+    max-width: 120px;    
+}
+
+#dias{
+    margin-bottom: 10px;
+}
+
+#field-60, #field-100{
+    display: inline;
+}
+
+#he{
+    text-align: center;
+}
+
+#botoes{
+    text-align: center;
+}
+
+#field-dsr{
+    text-align: center;    
+}
+
+#inform-dsr, #entrada-dsr{
+    display: inline;
+}
+
+#inform-dsr{
+    text-align: left;
+}
+
+#salario{
+    max-width: 250px;
+}
+
+
+#txt-dsr, #entrada-dsr{
+    display: inline;
+}
+
+
+
+
+
+
+
+
+
+
+
+ 

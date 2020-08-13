@@ -1,0 +1,171 @@
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital@1&family=Shadows+Into+Light&display=swap" rel="stylesheet">
+   <style>
+       body {
+           background: rgba(38, 104, 236, 0.829);
+       }
+       .card{
+           background: #B5B5B5;
+           margin-top: 50px;
+           margin-left: auto;
+           margin-right: auto;
+           min-height: 300px;
+           box-shadow: -5px 12px 15px 5px rgba(0,0,0,0.75);           
+       }          
+       .col-xs-6, .col-md-6 {
+           margin: auto;
+       }
+       #resultado-txt {
+           margin-bottom: 50px;
+       }
+         
+        #resultado{
+            font-family: 'Poppins', sans-serif;
+        
+       }
+       h6{
+        font-family: 'Shadows Into Light', cursive;
+       }
+       #he60, #he100, #salario, #dias{
+           margin-top: 10px;
+           max-width: 246px;
+           display: inline;
+       }
+       #dias, #sem {
+           margin-top: 10px;
+           max-width: 120px;
+           display: inline;
+       }
+
+       .btn {
+           margin: 10px;
+       }
+       footer {
+            background-color: #ffffff;
+            font-family: 'Arvo', serif;
+            width: 100%;
+            text-align: center;
+            position: relative;
+            bottom:0;
+            left:0;
+        }
+
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0; /* <-- Aparentemente, algumas margens ainda estão lá, apesar de estar ocultas */
+        }
+
+        input[type=number] {
+        -moz-appearance:textfield; /* Firefox */
+        }
+       
+   </style>
+    <title>Calculo de HE</title>
+</head>
+<body>
+    <div class="container" id="">
+        <div class="row">
+            <div class="col-xs-6 col-md-6" id="box">
+                <div class="card">
+                    <div class="card-body">
+                        <form action="">            
+                                <h4>Calculo de Hora Extra</h4>
+                            <div class="form-group">
+                                <input class="form-control" id="salario" type="number" min="0.00" max="20000.00" step="0.01" placeholder="SALÁRIO">
+                            </div>
+                            <div>
+                                Para cálculo de DSR, digite a quantidade de domingos, feriados e dias úteis no mês.
+                            </div>
+                            <div class="form-group">
+                                <input class="form-control" id="dias" type="number" placeholder="Dom e Fer">
+                                <input class="form-control" id="sem" type="number" placeholder="Dias úteis">
+                            </div>
+                            <div id="he" class="form-group">
+                                Digitar o valor de hora em decimal (ex: 08:40 = 8,66)
+                                <input class="form-control" id="he60" type="number" placeholder="HR 60%">
+                                <input class="form-control" id="he100" type="number" placeholder="HR 100%">
+                            </div>
+                                <input class="btn btn-primary" type="button" value="CALCULAR" onclick= calcular()>
+                                <input class="btn btn-dark" type="reset" value="Limpar" onclick= limpar()>                                
+                        </form>                            
+                    </div>
+                </div>    
+            </div>            
+        </div>
+        <div id="resultado-txt" class="row">
+            <div class="col-xs-6 col-md-6" id="box">
+                <div class="card">
+                    <div id="resposta-txt" class="card-body">
+                        <div id="resultado">
+                            Salário Mensal:<br>
+                            Quantidade de HE à 60%:<br>
+                            Quantidade de HE à 100%:<br>
+                            <br>
+                            Valor de HE à 60%:<br>
+                            Valor de HE à 100%:<br>
+                            <br>
+                            Total à receber de Hora Extra:<br>
+                            <br>
+                            O valor à receber de DSR é:
+                        </div>
+                    </div>
+                </div>      
+            </div>
+        </div>
+        
+    </div>
+
+    <script>
+        function calcular(){
+
+                var salario = document.getElementById('salario').value;
+                var he60 = document.getElementById('he60').value;
+                var he100 = document.getElementById('he100').value;
+
+                var valorHora = salario / 220; // Valor em R$/hora trabalhada
+                var h60 = valorHora * 1.6; // Valor da hora à 60%
+                var h100 = valorHora * 2; // Valor da hora à 100%
+
+                var r60 = h60 * he60; // Valor à receber de HE à 60%
+                var r100 = h100 * he100; // Valor à receber de HE à 100%
+
+                var res60 = r60.toFixed(2); // Definindo 2 casas decimais após a virgula
+                var res100 = r100.toFixed(2); // Definindo 2 casas decimais após a virgula
+
+                var total = parseFloat(res60) + parseFloat(res100); // Valor à receber de HE 60% + 100% (convertendo para float para poder somar e não concatenar)                
+
+                var resultado = document.getElementById('resultado');
+
+                // DSR
+                
+                var diasUteis = document.getElementById('sem').value;
+                var domFeriados = document.getElementById('dias').value;
+                
+                var resDsr = (total / diasUteis) * domFeriados;
+                var dsr = resDsr.toFixed(2);
+
+                resultado.innerHTML = "Salário Mensal: R$ "+salario+"<br>Quantidade de HE à 60%: "+he60+"<br>Quantidade de HE à 100%: "+he100+"<br><br>Valor de HE à 60%: R$ "+res60+"<br>Valor de HE à 100%: R$ "+res100+"<br><br>Total à receber de Hora Extra: R$ "+total+"<br><br> O valor à receber de DSR é: R$ "+dsr;
+        }
+
+
+        function limpar() {
+
+            apagar = document.getElementById('resultado');
+            apagar.innerHTML = "Salário Mensal:<br>Quantidade de HE à 60%:<br>Quantidade de HE à 100%:<br><br>Valor de HE à 60%:<br>Valor de HE à 100%:<br><br>Total à receber de Hora Extra:<br><br> O valor à receber de DSR é:";
+            
+        }
+    </script>
+    <footer class="footer mt-auto py-3">
+        <div class="container">
+            <span class="text-muted"><h5>Gabriel Gomes - Developer WEB</h5></span>
+        </div>
+    </footer>
+</body>
+
+</html>

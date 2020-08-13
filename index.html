@@ -1,0 +1,97 @@
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital@1&family=Shadows+Into+Light&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+
+    <title>Cálculo de HE</title>
+
+</head>
+<body>
+    <div class="container" id="">
+        <div class="row">
+            <div class="col-xs-6 col-md-6" id="box">
+                <div class="card">
+                    <div class="card-body">
+                        <form action="">            
+                                <h4>Cálculo de Hora Extra</h4>
+                                <!-- SALÁRIO -->
+                            <div class="form-group">
+                                Digite seu salário bruto mensal
+                                <input class="form-control" id="salario" type="number" min="0.00" max="20000.00" step="0.01" placeholder="R$ 0.000,00">
+                            </div>
+                            <div class="jumbotron">
+                                <div id="field-dsr" class="row">
+                                    <div class="col-xs-8 col-md-6" id="inform-dsr">
+                                        <p id="txt-dsr">Para cálculo de DSR, digite a quantidade de domingos, feriados e dias úteis no mês (considerando sábado).</p>
+                                    </div>
+                                            <!-- DIAS DSR -->
+                                    <div class="col-xs-4 col-md-6" id="entrada-dsr">                                
+                                        <input class="form-control" id="dias" type="number" placeholder="Dom e Fer">
+                                        <input class="form-control" id="sem" type="number" placeholder="Dias úteis">                                
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="he" class="form-group">
+                                <!-- HORA EXTRA 60% -->
+                                <fieldset id="field-60">
+                                    <legend>HORA EXTRA 60%</legend>
+                                    <div id="h60" class="form-group">                              
+                                        <input class="form-control" id="he60-h" type="number" placeholder="" value="00" max="99"> :
+                                        <input class="form-control" id="he60-m" type="number" placeholder="" value="00" max="59">
+                                    </div>
+                                </fieldset>
+                                <!-- HORA EXTRA 100% -->
+                                <fieldset id="field-100">
+                                    <legend>HORA EXTRA 100%</legend>
+                                    <div id="h100" class="form-group">
+                                        <input class="form-control" id="he100-h" type="number" placeholder="" value="00" max="99"> :
+                                        <input class="form-control" id="he100-m" type="number" placeholder="" value="00" max="59">
+                                    </div>
+                                </fieldset>
+                            </div>
+                            <div id="botoes">
+                                <input class="btn btn-primary" type="button" value="CALCULAR" onclick= calcular()>
+                                <input class="btn btn-dark" type="reset" value="Limpar" onclick= limpar()>
+                            </div>                            
+                        </form>                            
+                    </div>
+                </div>    
+            </div>            
+        </div>
+        <div id="resultado-txt" class="row">
+            <div class="col-xs-6 col-md-6" id="box">
+                <div class="card">
+                    <div id="resposta-txt" class="card-body">
+                        <div id="resultado">
+                            Salário Mensal:<br>
+                            Quantidade de HE à 60%:<br>
+                            Quantidade de HE à 100%:<br>
+                            <br>
+                            Valor de HE à 60%:<br>
+                            Valor de HE à 100%:<br>
+                            <br>
+                            Total à receber de Hora Extra:<br>
+                            <br>
+                            O valor à receber de DSR é:
+                        </div>
+                    </div>
+                </div>      
+            </div>
+        </div>
+        
+    </div>
+    
+    <footer class="footer mt-auto py-3">
+        <div class="container">
+            <span class="text-muted"><h5>Gabriel Gomes - Developer WEB</h5></span>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
